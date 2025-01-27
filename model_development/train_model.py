@@ -47,8 +47,7 @@ class_names = {
 
 # Training Config
 split_size = 0.2
-optimizer = torch.optim.Adam(net.parameters(), lr=init_lr)
-scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
+
 
 #################################################################################################
 # Data Load & Train Test Split & Prep
@@ -122,6 +121,14 @@ graph.render(os.path.join(ARTEFACTS_DIR, "neural_network_graph"), format="pdf")
 
 # Revert to training mode
 net.train()
+
+#################################################################################################
+# Optimizer & Scheduler
+#################################################################################################
+
+optimizer = torch.optim.Adam(net.parameters(), lr=init_lr)
+
+scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
 #################################################################################################
 # Training
