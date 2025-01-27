@@ -25,9 +25,15 @@ jobs:
         run: make train
 
       - name: Evaluation
+        run: make eval
+
+      - name: Report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: make eval
+        run: make report
+
+      - name: Load Model
+        run: make load-model
 
       - name: Update Branch
         env:
