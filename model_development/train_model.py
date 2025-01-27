@@ -22,7 +22,7 @@ print("Current device type: ", device)
 # Env Config
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DATA_DIR = os.path.join(BASE_DIR, "data")
-ARTEFACTS_DIR = os.path.join(BASE_DIR, "model_evaluation")
+ARTEFACTS_DIR = os.path.join(BASE_DIR, "model_reporting")
 TRAIN_FILE = "mnist_train.csv"
 TEST_FILE = "mnist_test.csv"
 
