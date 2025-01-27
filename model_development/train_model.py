@@ -180,7 +180,7 @@ f1 = f1_score(test_labels, predictions, average="weighted")
 metrics_file = os.path.join(ARTEFACTS_DIR, "metrics.txt")
 with open(metrics_file, "w") as outfile:
     outfile.write(
-        f"\nAccuracy: {round(accuracy, 4)}\nPrecision: {round(precision, 4)}\nRecall: {round(recall, 4)}\nF1 Score: {round(f1, 4)}"
+        f"Accuracy: {round(accuracy, 4)}\nPrecision: {round(precision, 4)}\nRecall: {round(recall, 4)}\nF1 Score: {round(f1, 4)}"
     )
 
 # Save confusion matrix plot
