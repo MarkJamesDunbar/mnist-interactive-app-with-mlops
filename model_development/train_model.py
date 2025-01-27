@@ -16,17 +16,21 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print("Current device type: ", device)
 
 #################################################################################################
-# Config Variables
+# Config 
 #################################################################################################
 
+# Env Config
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 ARTEFACTS_DIR = os.path.join(BASE_DIR, "model_evaluation")
 TRAIN_FILE = "mnist_train.csv"
 TEST_FILE = "mnist_test.csv"
 
-# Training Config
-split_size = 0.2
+# Model Config
+init_lr = 0.001
+batch_size = 100
+epochs = 1
+img_size = 28
 num_classes = 10
 class_names = {
     0: "Zero",
@@ -40,12 +44,11 @@ class_names = {
     8: "Eight",
     9: "Nine",
 }
-img_size = 28
 
-# Model Config
-init_lr = 0.001
-batch_size = 100
-epochs = 1
+# Training Config
+split_size = 0.2
+optimizer = torch.optim.Adam(net.parameters(), lr=init_lr)
+scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
 #################################################################################################
 # Data Load & Train Test Split & Prep
@@ -119,14 +122,6 @@ graph.render(os.path.join(ARTEFACTS_DIR, "neural_network_graph"), format="pdf")
 
 # Revert to training mode
 net.train()
-
-#################################################################################################
-# Optimizer & Scheduler
-#################################################################################################
-
-optimizer = torch.optim.Adam(net.parameters(), lr=init_lr)
-
-scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.9)
 
 #################################################################################################
 # Training

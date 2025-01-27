@@ -51,7 +51,7 @@ update-branch:
 		echo "No changes to commit."; \
  	fi
 
-all: install format train eval report load-model
+all: install format train eval report load-model update-branch
 
 
 #eval update-branch deploy
