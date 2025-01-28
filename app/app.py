@@ -4,8 +4,7 @@ import torch
 import gradio as gr
 import cv2
 
-# import model.model_artchitecture as ma
-import model_architecture as ma
+import model.model_architecture as ma
 
 # app title
 title = "Interactive MNIST Digit Recognition"
@@ -83,3 +82,4 @@ interface = gr.Interface(
     description=head,
     article=ref,
 ).launch()
+
