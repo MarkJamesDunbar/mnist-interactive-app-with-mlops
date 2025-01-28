@@ -107,10 +107,10 @@ def confusion_matrix(num_classes, validation_labels, predictions, save_path):
     cmt = cmt.cpu().detach().numpy()
 
     df_cm = pd.DataFrame(
-        cmt / np.sum(cmt) * 10,
+        cmt / np.sum(cmt),
         index=[i for i in range(num_classes)],
         columns=[i for i in range(num_classes)],
-    )
+    )   
 
     plt.figure(figsize=(12, 7))
     sn.heatmap(df_cm, annot=True, fmt=".2f", cmap="Blues")
