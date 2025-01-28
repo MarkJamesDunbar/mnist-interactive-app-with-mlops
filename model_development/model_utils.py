@@ -5,7 +5,7 @@ import pandas as pd
 import torch
 
 import matplotlib.pyplot as plt
-import seaborn as sn
+from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
 
 
 def load_dataset(file_name, data_folder):
@@ -96,32 +96,19 @@ def eval_model(network, device, validation_data, validation_set_size, batch_size
     return val_loss, ((val_correct / validation_set_size) * 100)
 
 
-def confusion_matrix(num_classes, validation_labels, predictions, save_path):
-    """Generate and save a confusion matrix for the Neural Network"""
 
-    # Generate the confusion matrix
-    cmt = torch.zeros(num_classes, num_classes, dtype=torch.int32)
-    for i in range(len(validation_labels)):
-        cmt[validation_labels[i], predictions[i]] += 1
+def generate_confusion_matrix(validation_labels, predictions, save_path):
+    """Generate and save a confusion matrix for the Neural Network using sklearn"""
 
-    cmt = cmt.cpu().detach().numpy()
+    cmt = confusion_matrix(validation_labels, predictions)
 
-    df_cm = pd.DataFrame(
-        cmt / np.sum(cmt),
-        index=[i for i in range(num_classes)],
-        columns=[i for i in range(num_classes)],
-    )   
+    disp = ConfusionMatrixDisplay(confusion_matrix=cmt)
 
-    plt.figure(figsize=(12, 7))
-    sn.heatmap(df_cm, annot=True, fmt=".2f", cmap="Blues")
-    plt.title("Neural Network Confusion Matrix", fontsize=20)
+    fig, ax = plt.subplots(figsize=(12, 7))
+    disp.plot(cmap="Blues", ax=ax, xticks_rotation="vertical")
+    ax.set_title("Neural Network Confusion Matrix", fontsize=20)
 
-    # Use os to ensure the save path is valid
-    os.makedirs(os.path.dirname(save_path), exist_ok=True)
-    plt.savefig(save_path, dpi=300, bbox_inches="tight")
-
-    print(f"Confusion matrix saved to {save_path}")
-
+    plt.savefig(save_path)
 
 def train_model(network, device, optimizer, scheduler, training_data, batch_size):
     """Trains the model using the training data"""

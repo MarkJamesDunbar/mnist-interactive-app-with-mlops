@@ -29,7 +29,7 @@ TEST_FILE = "mnist_test.csv"
 # Model Config
 init_lr = 0.001
 batch_size = 100
-epochs = 30
+epochs = 50
 img_size = 28
 num_classes = 10
 class_names = {
@@ -72,7 +72,7 @@ train_trans = torchvision.transforms.Compose(
     [
         torchvision.transforms.ToPILImage(),
         torchvision.transforms.RandomCrop(img_size),
-        torchvision.transforms.RandomRotation(90),
+        torchvision.transforms.RandomRotation(180),
         torchvision.transforms.ColorJitter(brightness=0.2, contrast=0.2),
         torchvision.transforms.RandomAffine(degrees=5, translate=(0.1, 0.1)),
         torchvision.transforms.ToTensor(),
@@ -187,11 +187,11 @@ with open(metrics_file, "w") as outfile:
     )
 
 # Save confusion matrix plot
-mu.confusion_matrix(
-    num_classes,
+mu.generate_confusion_matrix(
+    # num_classes,
     test_labels,
     predictions,
-    save_path=os.path.join(ARTEFACTS_DIR, "confusion_matrix.png"),
+    save_path=os.path.join(ARTEFACTS_DIR, "confusion_matrix.png")
 )
 
 epoch_num = list(range(1, epochs + 1))
