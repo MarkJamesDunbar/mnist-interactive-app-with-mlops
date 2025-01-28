@@ -61,7 +61,8 @@ hf-login:
 
 push-hub: 
 	huggingface-cli upload MarkJamesDunbar/mnist-interactive-app ./app --repo-type=space --commit-message="Sync App files"
-	huggingface-cli upload MarkJamesDunbar/mnist-interactive-app ./model_reporting /model_reporting --repo-type=space --commit-message="Sync Model"
+	huggingface-cli upload MarkJamesDunbar/mnist-interactive-app ./app/models/model_architecture.py --repo-type=space --commit-message="Sync Model"
+	huggingface-cli upload MarkJamesDunbar/mnist-interactive-app ./model_reporting /model_reporting --repo-type=space --commit-message="Sync Model Report"
 
 deploy: hf-login push-hub
 
