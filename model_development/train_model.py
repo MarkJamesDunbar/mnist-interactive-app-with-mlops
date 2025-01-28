@@ -67,11 +67,12 @@ test_images.reset_index(drop=True, inplace=True)
 train_labels.reset_index(drop=True, inplace=True)
 test_labels.reset_index(drop=True, inplace=True)
 
+# Some pretty cool random augmentations
 train_trans = torchvision.transforms.Compose(
     [
         torchvision.transforms.ToPILImage(),
         torchvision.transforms.RandomCrop(img_size),
-        torchvision.transforms.RandomRotation(20),
+        torchvision.transforms.RandomRotation(90),
         torchvision.transforms.ColorJitter(brightness=0.2, contrast=0.2),
         torchvision.transforms.RandomAffine(degrees=5, translate=(0.1, 0.1)),
         torchvision.transforms.ToTensor(),
