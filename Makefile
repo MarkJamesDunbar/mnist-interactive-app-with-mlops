@@ -55,13 +55,12 @@ all: install format train eval report load-model update-branch
 
 hf-login: 
 	pip install -U "huggingface_hub[cli]"
-	git pull --no-rebase origin update
+	git pull --allow-unrelated-histories origin update
 	git switch update
 	huggingface-cli login --token $(HF) --add-to-git-credential
 
 push-hub: 
 	huggingface-cli upload MarkJamesDunbar/mnist-interactive-app ./app --repo-type=space --commit-message="Sync App files"
-	# huggingface-cli upload MarkJamesDunbar/mnist-interactive-app ./app/model/model_architecture.py --repo-type=space --commit-message="Sync Model"
 	huggingface-cli upload MarkJamesDunbar/mnist-interactive-app ./model_reporting /model_reporting --repo-type=space --commit-message="Sync Model Report"
 
 deploy: hf-login push-hub

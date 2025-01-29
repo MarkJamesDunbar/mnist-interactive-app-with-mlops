@@ -22,7 +22,7 @@ head = f"""
 """
 
 # GitHub repository link
-ref = "Find the whole code [here](https://github.com/MarkJamesDunbar)."
+ref = "This is a demo app for testing CI/CD builds with Deployed Machine Learning. Find my shoddy code [here](https://github.com/MarkJamesDunbar/mnist-interactive-app-with-mlops)."
 
 # image size: 28x28
 img_size = 28
