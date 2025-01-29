@@ -1,8 +1,8 @@
 ---
 title: MNIST Interactive App
-emoji: 🦀
-colorFrom: pink
-colorTo: purple
+emoji: 🧮
+colorFrom: orange
+colorTo: green
 sdk: gradio
 sdk_version: 3.0.10
 app_file: app.py
