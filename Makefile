@@ -9,7 +9,7 @@ train:
 	python ./model_development/train_model.py	
 
 eval:
-	@threshold=0.8; \
+	@threshold=0.95; \
 	f1_score=$$(grep "F1 Score" ./model_reporting/metrics.txt | awk -F": " '{print $$2}'); \
 	echo "F1 Score: $$f1_score"; \
 	if [ $$(echo "$$f1_score < $$threshold" | bc) -eq 1 ]; then \
