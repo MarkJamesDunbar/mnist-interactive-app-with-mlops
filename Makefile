@@ -55,7 +55,7 @@ all: install format train eval report load-model update-branch
 
 hf-login: 
 	pip install -U "huggingface_hub[cli]"
-	git pull --allow-unrelated-histories origin update
+	git pull --allow-unrelated-histories --no-rebase origin update
 	git switch update
 	huggingface-cli login --token $(HF) --add-to-git-credential
 
