@@ -31,7 +31,7 @@ TEST_FILE = "mnist_test.csv"
 # Model Config
 init_lr = 0.001
 batch_size = 100
-epochs = 1
+epochs = 50
 img_size = 28
 num_classes = 10
 class_names = {
