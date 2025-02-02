@@ -4,6 +4,8 @@ import torchvision
 import torchviz
 import torchsummary
 
+from safetensors.torch import save_file
+
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import matplotlib.pyplot as plt
@@ -236,4 +238,6 @@ plt.savefig(os.path.join(ARTEFACTS_DIR, "nn_acc_curve.png"))
 #################################################################################################
 
 # torch.save(net, os.path.join(BASE_DIR, "app", "model", "model.pth"))
-torch.save(net.state_dict(), os.path.join(BASE_DIR, "app", "model", "model_weights.pth"))
+# torch.save(net.state_dict(), os.path.join(BASE_DIR, "app", "model", "model_weights.pth"))
+# Save the model weights to a safetensors file
+save_file(net.state_dict(), os.path.join(BASE_DIR, "app", "model", "model_weights.safetensors"))

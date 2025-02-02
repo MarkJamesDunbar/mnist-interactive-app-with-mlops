@@ -3,6 +3,8 @@ import base64
 import torch
 import gradio as gr
 import cv2
+from safetensors.torch import load_file
+
 
 import model.model_architecture as ma
 
@@ -41,11 +43,10 @@ labels = [
     "nine",
 ]
 
-# load model (trained on MNIST dataset)
-# model = torch.load("./model/model.pth")
+# load model
 net = ma.Network()
-net.load_state_dict(torch.load("./model/model_weights.pth"))
-
+state_dict = load_file("./model/model_weights.safetensors")
+net.load_state_dict(state_dict)
 net.eval()
 
 
