@@ -8,3 +8,4 @@ torchviz
 torchsummary
 matplotlib
 seaborn
+safetensors
