@@ -54,7 +54,6 @@ update-branch:
 all: install format train eval report load-model update-branch
 
 hf-login: 
-	hf-login: 
 	pip install -U "huggingface_hub[cli]"
 	git pull origin update
 	git switch update
