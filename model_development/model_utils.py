@@ -96,7 +96,6 @@ def eval_model(network, device, validation_data, validation_set_size, batch_size
     return val_loss, ((val_correct / validation_set_size) * 100)
 
 
-
 def generate_confusion_matrix(validation_labels, predictions, save_path):
     """Generate and save a confusion matrix for the Neural Network using sklearn"""
 
@@ -109,6 +108,7 @@ def generate_confusion_matrix(validation_labels, predictions, save_path):
     ax.set_title("Neural Network Confusion Matrix", fontsize=20)
 
     plt.savefig(save_path)
+
 
 def train_model(network, device, optimizer, scheduler, training_data, batch_size):
     """Trains the model using the training data"""

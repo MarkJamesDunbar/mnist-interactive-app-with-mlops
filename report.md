@@ -1,9 +1,8 @@
 ## Model Metrics
-
-Accuracy: 0.9741
-Precision: 0.9749
-Recall: 0.9741
-F1 Score: 0.9742
+Accuracy: 0.9685
+Precision: 0.9685
+Recall: 0.9685
+F1 Score: 0.9684
 ## Model Confusion Matrix
 ![Confusion Matrix](./model_reporting/confusion_matrix.png)
 

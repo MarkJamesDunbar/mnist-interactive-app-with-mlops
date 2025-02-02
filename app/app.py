@@ -86,4 +86,3 @@ interface = gr.Interface(
     description=head,
     article=ref,
 ).launch()
-

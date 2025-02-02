@@ -193,7 +193,7 @@ mu.generate_confusion_matrix(
     # num_classes,
     test_labels,
     predictions,
-    save_path=os.path.join(ARTEFACTS_DIR, "confusion_matrix.png")
+    save_path=os.path.join(ARTEFACTS_DIR, "confusion_matrix.png"),
 )
 
 epoch_num = list(range(1, epochs + 1))
@@ -240,4 +240,7 @@ plt.savefig(os.path.join(ARTEFACTS_DIR, "nn_acc_curve.png"))
 # torch.save(net, os.path.join(BASE_DIR, "app", "model", "model.pth"))
 # torch.save(net.state_dict(), os.path.join(BASE_DIR, "app", "model", "model_weights.pth"))
 # Save the model weights to a safetensors file
-save_file(net.state_dict(), os.path.join(BASE_DIR, "app", "model", "model_weights.safetensors"))
+save_file(
+    net.state_dict(),
+    os.path.join(BASE_DIR, "app", "model", "model_weights.safetensors"),
+)
