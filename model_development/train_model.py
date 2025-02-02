@@ -29,7 +29,7 @@ TEST_FILE = "mnist_test.csv"
 # Model Config
 init_lr = 0.001
 batch_size = 100
-epochs = 50
+epochs = 1
 img_size = 28
 num_classes = 10
 class_names = {
@@ -235,4 +235,5 @@ plt.savefig(os.path.join(ARTEFACTS_DIR, "nn_acc_curve.png"))
 # Export Model
 #################################################################################################
 
-torch.save(net, os.path.join(BASE_DIR, "app", "model", "model.pth"))
+# torch.save(net, os.path.join(BASE_DIR, "app", "model", "model.pth"))
+torch.save(net.state_dict(), os.path.join(BASE_DIR, "app", "model", "model_weights.pth"))

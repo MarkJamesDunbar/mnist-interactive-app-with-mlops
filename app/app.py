@@ -42,8 +42,11 @@ labels = [
 ]
 
 # load model (trained on MNIST dataset)
-model = torch.load("./model/model.pth")
-model.eval()
+# model = torch.load("./model/model.pth")
+net = ma.Network()
+net.load_state_dict(torch.load("./model/model_weights.pth"))
+
+net.eval()
 
 
 # prediction function for sketch recognition
@@ -63,7 +66,7 @@ def predict(img):
 
     # Make predictions
     with torch.no_grad():
-        outputs = model(img_tensor)  # Raw logits from the model
+        outputs = net(img_tensor)  # Raw logits from the model
         probs = torch.nn.functional.softmax(outputs, dim=1)  # Convert to probabilities
 
     # Map predictions to class labels
